@@ -4,7 +4,7 @@ import {InputBox} from './components'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 function App() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState({});
   const [from, setFrom] = useState('usd');
   const [to, setTo] = useState('inr');
   const [convertedAmount, setConvertedAmount] = useState(0);
@@ -28,12 +28,13 @@ function App() {
     <div
       className="d-flex justify-content-center align-items-center vh-100"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
+        backgroundImage: `url('https://images.pexels.com/photos/14751274/pexels-photo-14751274.jpeg')`,
         backgroundSize: 'cover',
       }}
     >
-      <div className="container">
-        <div className='conatiner  p-4' style={{ maxWidth: '600px', backgroundColor: 'rgba(230, 255, 255, 0.5)' }}>
+      {/* <div className="container d-flex align-align-content-center justify-content-center"> */}
+      <div className="container " style={{maxWidth: '600px'}}>
+        <div className='conatiner p-4' style={{ maxWidth: '600px', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -65,7 +66,7 @@ function App() {
                 amount={convertedAmount}
                 currencyOptions={options}
                 onCurrencyChange={(currency) => setTo(currency)}
-                selectCurrency={from}
+                selectCurrency={to}
                 amountDisable
               />
             </div>
@@ -75,7 +76,8 @@ function App() {
           </form>
         </div>
       </div>
-    </div>
+      </div>
+    // </div>
     
    
 

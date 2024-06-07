@@ -15,7 +15,7 @@ function InputBox({
 
   const amountInputId= useId();
   return (
-    <div className="container mt-5">
+    <div className="container">
       <div className="container card d-flex  justify-content-center" style={{ width: "100%"  }}>
         <div className="card-body">
        
