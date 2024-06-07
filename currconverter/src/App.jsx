@@ -34,7 +34,7 @@ function App() {
     >
       {/* <div className="container d-flex align-align-content-center justify-content-center"> */}
       <div className="container " style={{maxWidth: '600px'}}>
-        <div className='conatiner p-4' style={{ maxWidth: '600px', backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+        <div className='conatiner p-4' style={{ maxWidth: '600px', backgroundColor: 'rgba(255, 255, 255, 0.6)' }}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
