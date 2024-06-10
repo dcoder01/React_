@@ -31,6 +31,14 @@ function Header() {
                             </NavLink>
                         </li>
                         
+                        <li><NavLink to="/contact"  className={
+                            ({isActive})=>`nav-link ${isActive? 'text-warning' : 'text-secondary'} px-2 text-secondary`
+                        }
+                        >
+                            contact
+                            </NavLink>
+                        </li>
+                        
                     </ul>
 
                     <div className="text-end">
