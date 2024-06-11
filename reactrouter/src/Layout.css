@@ -1,0 +1,14 @@
+#load.loading::before{
+    content: 'Loading...';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    size: 5rem;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1000;
+  }
