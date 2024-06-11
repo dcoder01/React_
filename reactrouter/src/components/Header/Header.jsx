@@ -38,6 +38,13 @@ function Header() {
                             contact
                             </NavLink>
                         </li>
+                        <li><NavLink to="/github"  className={
+                            ({isActive})=>`nav-link ${isActive? 'text-warning' : 'text-secondary'} px-2 text-secondary`
+                        }
+                        >
+                            github
+                            </NavLink>
+                        </li>
                         
                     </ul>
 

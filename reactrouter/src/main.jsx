@@ -7,6 +7,8 @@ import Layout from './Layout.jsx'
 import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact/Contact.jsx'
+import User from './components/User/User.jsx'
+import Github, { githubinfoloader } from './components/Github/Github.jsx'
 // const router=createBrowserRouter([
 //   {
 //     path:'/',
@@ -35,11 +37,17 @@ const router = createBrowserRouter(
       <Route path='' element={<Home/>} />
       <Route path='about' element={<About/>} />
       <Route path='contact' element={<Contact/>} />
+      <Route path='user/:id' element={<User/>} />
+      <Route
+        loader= {githubinfoloader}
+        //loader auto feteches the data ehen i hover on the github also stores in cache.
+       path='github'
+       element={<Github/>} />
 
     </Route>
   )
 )
-
+//for nesting the router <> ans inside this i can have self closing one for nesting</>
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
