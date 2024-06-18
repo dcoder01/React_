@@ -6,17 +6,18 @@ import Todos from './components/Todos'
 
 function App() {
 
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
   return (
     <>
-      <div className="bg-dark min-vh-100 py-4">
+      <div className="min-vh-100 py-4">
         <div className="container  text-white">
-          <h1 className="text-center mb-4">Manage Your Todos</h1>
+          <h1 style={{color:"darkblue"}} className="text-center mb-4">Manage Your Todos</h1>
           <div className="mb-3">
-            <Adddtodo/>
+            <Adddtodo selectedTodo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
           </div>
           <div className="d-flex flex-column">
-            <Todos/>
+            <Todos setSelectedTodo={setSelectedTodo}/>
           </div>
         </div>
       </div>

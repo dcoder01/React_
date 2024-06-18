@@ -1,44 +1,46 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeTodo } from '../features/todo/todoSlice';
+import { removeTodo, toggleTodo } from '../features/todo/todoSlice';
 
-function Todos() {
+function Todos({setSelectedTodo}) {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   return (
     <>
-      <div>Todos</div>
+     <h5 style={{color:"darkblue"}}>Your Todos</h5>
       <ul className="list-unstyled">
         {todos.map((todo) => (
            
 
           <li
-            className="mt-3 d-flex justify-content-between align-items-center bg-secondary text-white p-2 rounded"
+           className="mt-3 d-flex justify-content-between align-items-center bg-secondary text-white p-2 rounded"
             key={todo.id}
           >
-             
-            <div>{todo.text}</div>
+                <div className="d-flex align-items-center">
+              <input
+                type="checkbox"
+                className="form-check-input me-2"
+                checked={todo.completed}
+                onChange={()=>dispatch(toggleTodo(todo.id))}
+              />
+              <span className={`ms-2 ${todo.completed ? 'text-decoration-line-through' : ''}`}>
+                {todo.text}
+              </span>
+            </div>
+             <div>
+             <button
+                className="btn btn-outline-dark"
+                onClick={() => setSelectedTodo(todo)}
+              >
+                ✏️
+              </button>
             <button
               onClick={() => dispatch(removeTodo(todo.id))}
-              className="btn btn-danger"
+              className="btn btn-outline-dark"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="bi bi-trash"
-                width="24"
-                height="24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 6h18M9 6v12m6-12v12m4 0H5V6h14zM5 6h14V4H5v2z"
-                />
-              </svg>
+              ❌
             </button>
+             </div>
           </li>
         ))}
       </ul>

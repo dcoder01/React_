@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addTodo } from '../features/todo/todoSlice'
-function Adddtodo() {
+import { addTodo, updateTodo } from '../features/todo/todoSlice'
+function Adddtodo({selectedTodo, setSelectedTodo}) {
     const [input, setInput] = useState("")
     const dispatch = useDispatch()
+    useEffect(()=>{
+        if (selectedTodo) {
+            setInput(selectedTodo.text);
+        }
 
+    },[selectedTodo])
     const addTodoHandler = (e) => {
+        // e.preventDefault();
+        // dispatch(addTodo(input))
+        // setInput('')
         e.preventDefault();
-        dispatch(addTodo(input))
-        setInput('')
+        if(selectedTodo){
+           dispatch(updateTodo({id:selectedTodo.id, text: input}))
+           setSelectedTodo(null);
+        }
+        else{
+            dispatch(addTodo(input))
+        }
+        setInput('');
 
 
     }
+
     return (
-        <form onSubmit={addTodoHandler} className="mt-3 d-flex align-items-center">
+        <form onSubmit={addTodoHandler} className="mt-3 d-flex">
             <input
                 type="text"
                 className="form-control me-2"
@@ -25,7 +40,7 @@ function Adddtodo() {
                 type="submit"
                 className="btn btn-primary"
             >
-                Add Todo
+               {selectedTodo?'Update Todo' :'Add Todo'}
             </button>
         </form>
     );
